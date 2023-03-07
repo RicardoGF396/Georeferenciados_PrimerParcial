@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="./assets/favi.ico" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="/node_modules/ol/ol.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Place</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <h1>Real Place</h1>
+        <div>
+          <ul>
+            <li>Inicio</li>
+            <li>Hoteles</li>
+            <li>Playas</li>
+            <li>Restaurantes</li>
+            <li><img src="./assets/notification.svg" alt="notification" /></li>
+            <li><img src="./assets/profile.png" alt="profile" /></li>
+          </ul>
+        </div>
+      </nav>
+      <main>
+        <aside>
+          <div>
+            <div>
+              <div class="details-container">
+                <div>
+                  <h3 class="text-main">León, Guanajuato</h3>
+                  <p class="text-color subtitle">México</p>
+                </div>
+                <p class="text-color">37000</p>
+              </div>
+            </div>
+            <div>
+              <form id="mapForm">
+                <input
+                  name="name"
+                  id="name"
+                  required
+                  placeholder="Nombre"
+                />
+                <input
+                  name="formLat"
+                  id="formLat"
+                  required
+                  placeholder="Latitud"
+                />
+                <input
+                  name="formLon"
+                  id="formLon"
+                  required
+                  placeholder="Longitud"
+                />
+                <button type="submit">Buscar</button>
+              </form>
+            </div>
+
+            <div class="places">
+              <!-- Universidad -->
+              <div class="place-container">
+                <div>
+                  <img
+                    class="img-place"
+                    src="https://static1.educaedu.com.mx/adjuntos/9/00/18/universidad-de-la-salle-baj-o-001866_large.jpg"
+                    alt="place"
+                  />
+                </div>
+                <div class="place-content">
+                  <h4 class="text-color">Universidad La Salle Bajío</h4>
+                  <p class="subtitle-place">
+                    Avenida Universidad 602, Lomas del Campestre, 37150 León,
+                    Gto.
+                  </p>
+                  <p class="text-color numbers">Latitud: 21.152914545312658</p>
+                  <p class="text-color numbers">
+                    Longitud: -101.71144194704233
+                  </p>
+                </div>
+              </div>
+              <!-- Metropolitano -->
+              <div class="place-container">
+                <div>
+                  <img
+                    class="img-place"
+                    src="https://escapadas.mexicodesconocido.com.mx/wp-content/uploads/2022/11/parque-metropolitano-leon-portada.jpg"
+                    alt="place"
+                  />
+                </div>
+                <div class="place-content">
+                  <h4 class="text-color">Parque Metropolitano</h4>
+                  <p class="subtitle-place">
+                    Prol. Blvd. Adolfo López Mateos Nte. S/N, El Palote, 37130
+                    León, Gto.
+                  </p>
+                  <p class="text-color numbers">Latitud: 21.173315722385908</p>
+                  <p class="text-color numbers">
+                    Longitud: -101.68671877354984
+                  </p>
+                </div>
+              </div>
+              <!-- Centro Max -->
+              <div class="place-container">
+                <div>
+                  <img
+                    class="img-place"
+                    src="https://bonitoleon.com/content/uploads/2022/12/centro-max-centro-comercial.jpg?is-pending-load=1"
+                    alt="place"
+                  />
+                </div>
+                <div class="place-content">
+                  <h4 class="text-color">Centro Max</h4>
+                  <p class="subtitle-place">
+                    Blvd. Adolfo López Mateos 2518, Jardines de Jerez, 37530
+                    León, Gto.
+                  </p>
+                  <p class="text-color numbers">Latitud: 21.10027835683217</p>
+                  <p class="text-color numbers">
+                    Longitud: -101.63564749869822
+                  </p>
+                </div>
+              </div>
+              <!-- Biblioteca -->
+              <div class="place-container last-place">
+                <div>
+                  <img
+                    class="img-place"
+                    src="https://cdn.milenio.com/uploads/media/2021/05/28/biblioteca-leon-foto-especial_0_23_1024_637.jpeg"
+                    alt="place"
+                  />
+                </div>
+                <div class="place-content">
+                  <h4 class="text-color">
+                    Biblioteca Central Estatal Wigberto Jiménez Moreno
+                  </h4>
+                  <p class="subtitle-place">
+                    Prol, C. Calz. de los Heroes 908, La Martinica, 37500 León,
+                    Gto.
+                  </p>
+                  <p class="text-color numbers">Latitud: 21.117381917952684</p>
+                  <p class="text-color numbers">
+                    Longitud: -101.66081709072215
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+        <map>
+          <div id="map"></div>
+          <div class="current_location">
+            <div style="display: flex; align-items: center; gap: 0.5rem">
+              <img width="24px" src="/assets/locate.svg" alt="icon" />
+              <p>Ubicación actual</p>
+            </div>
+            <p
+              style="
+                font-size: 12px;
+                margin-top: 0.5rem;
+                margin-bottom: 4px;
+                color: #828282;
+              "
+            >
+              Nombre: <span id="nombre">-</span>
+            </p>
+            <p
+              style="
+                font-size: 12px;
+                margin-top: 0.5rem;
+                margin-bottom: 4px;
+                color: #828282;
+              "
+            >
+              Coordenadas: <span id="lat">-</span> <span id="lon"></span>
+            </p>
+          </div>
+          <div id="no-data" class="no-data">
+            <img src="./assets/map.svg" alt="mapa" />
+            <p>Completa los datos para desplegar el mapa</p>
+          </div>
+        </map>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/elm-pep@1.0.6/dist/elm-pep.js"></script>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
